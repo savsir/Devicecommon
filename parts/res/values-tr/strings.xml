@@ -27,7 +27,7 @@
 
     <!-- camera -->
     <string name="camera_title">Kamera</string>
-    <string name="camera_hal3_title">Camera2 API'yi etkinleştir</string>
+    <string name="camera_hal3_title">Camera2 API etkinleştir</string>
 
     <!-- s2s -->
     <string name="s2s_title">Kaydırarak uyut</string>
