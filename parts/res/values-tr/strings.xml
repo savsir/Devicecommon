@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2014-2017 The OmniROM Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="app_name">Xiaomi</string>
+    <string name="advanced_settings">Xiaomi</string>
+    <string name="advanced_settings_summary">Gelişmiş ayarlar</string> 
+    <string name="category_system">Sistem</string>
+    <string name="vib_strength_title_head">Titreşim gücü</string>
+    <string name="taptowake_title">Dokunarak uyandır</string>
+    <string name="taptowake_summary">Uyandırmak için çift tıklama</string>
+
+    <string name="display_title">Ekran</string>
+    <string name="device_doze_title">Ortam ekranı</string>
+
+    <!-- camera -->
+    <string name="camera_title">Kamera</string>
+    <string name="camera_hal3_title">Camera2 API'yi etkinleştir</string>
+
+    <!-- s2s -->
+    <string name="s2s_title">Kaydırarak uyut</string>
+    <string name="s2s_vib_strength_title_head">Kaydırarak uyutma titreşimi</string>
+
+    <!-- Kcal -->
+    <string name="kcal_title">Ekran rengi</string>
+    <string name="kcal_summary">KCAL kullanarak ekran renklerini kalibre edin</string>
+    <string name="kcal_enabled_title">KCAL kullan</string>
+    <string name="kcal_enabled_summary">KCAL kullanarak ekranı kalibre etmek için aktifleştirin</string>
+    <string name="kcal_red">Kırmızı</string>
+    <string name="kcal_green">Yeşil</string>
+    <string name="kcal_blue">Mavi</string>
+    <string name="kcal_saturation">Doygunluk</string>
+    <string name="kcal_contrast">Kontrast</string>
+    <string name="menu_reset">S</string>
+    <string name="kcal_color_temp">Renk sıcaklığı(K)</string>
+
+    <!-- Spectrum Profiles -->
+    <string name="spectrum_profile_title">SPECTRUM Profili</string>
+    <string name="spectrum_title">SPECTRUM Profili</string>
+    <string name="spectrum_summary">Güç profininizi seçin</string>
+    <string name="spectrum_dialogTitle">Güç profininizi seçin</string>
+
+</resources>
