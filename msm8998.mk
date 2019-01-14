@@ -366,14 +366,5 @@ PRODUCT_PACKAGES += \
     XiaomiDoze \
     XiaomiParts
 
-# Wi-Fi Display
-PRODUCT_PACKAGES += \
-    libaacwrapper \
-    libnl \
-    vendor.display.config@1.0
-
-PRODUCT_BOOT_JARS += \
-    WfdCommon
-	
 # Call the proprietary setup
 $(call inherit-product, vendor/xiaomi/msm8998-common/msm8998-common-vendor.mk)
