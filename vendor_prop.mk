@@ -54,6 +54,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.use.sw.ape.decoder=true \
     vendor.audio_hal.period_size=192
 
+# Audio calibration
+PRODUCT_PROPERTY_OVERRIDES += \
+    audio.calibration_enabled=0
+	
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     qcom.bluetooth.soc=cherokee \

@@ -171,3 +171,13 @@ service vendor.readmac /vendor/bin/readmac
     user system
     group system net_raw
     oneshot
+
+service tfa-sh /system/bin/init.tfa.sh /vendor/etc/calibration_sound.wav 15 1
+    class main
+    user system
+    group system
+    disabled
+    oneshot
+
+on property:sys.boot_completed=1 && property:audio.calibration_enabled=1
+    start tfa-sh

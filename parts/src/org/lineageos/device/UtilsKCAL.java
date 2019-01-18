@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2015 The CyanogenMod Project
+ *               2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.omnirom.device;
+package org.lineageos.device;
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
@@ -32,32 +33,6 @@ import android.util.Log;
 import java.lang.Math;
 
 public final class UtilsKCAL {
-
-     /**
-     * Write a string value to the specified file.
-     * @param filename      The filename
-     * @param value         The value
-     */
-    public static void writeValue(String filename, String value) {
-        try {
-            FileOutputStream fos = new FileOutputStream(new File(filename));
-            fos.write(value.getBytes());
-            fos.flush();
-            fos.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static boolean fileExists(String filename) {
-        return new File(filename).exists();
-    }
-
-    public static boolean fileWritable(String filename) {
-        return fileExists(filename) && new File(filename).canWrite();
-    }
 
     /**
      * Convert color temperature in Kelvins to ColorMatrix color

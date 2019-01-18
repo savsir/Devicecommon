@@ -1,4 +1,4 @@
-package org.omnirom.device.utils;
+package org.lineageos.device.utils;
 
 import android.content.Context;
 import android.util.AttributeSet;
