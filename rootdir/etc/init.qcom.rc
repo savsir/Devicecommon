@@ -352,3 +352,6 @@ service vendor.time_daemon /vendor/bin/time_daemon
     user root
     group root
     writepid /dev/cpuset/system-background/tasks
+	
+# Start RIL daemon
+    start ril-daemon
