@@ -1,20 +1,21 @@
 /*
- * Copyright (c) 2015 The CyanogenMod Project
- *               2017 The LineageOS Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-package org.lineageos.device;
+* Copyright (C) 2016 The OmniROM Project
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program. If not, see <http://www.gnu.org/licenses/>.
+*
+*/
+package org.omnirom.device;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -30,9 +31,6 @@ import android.widget.Button;
 import android.os.Bundle;
 import android.util.Log;
 import android.os.Vibrator;
-
-import org.lineageos.device.R;
-import org.lineageos.device.utils.FileUtils;
 
 public class VibratorStrengthPreference extends Preference implements
         SeekBar.OnSeekBarChangeListener {
@@ -70,15 +68,15 @@ public class VibratorStrengthPreference extends Preference implements
     }
 
     public static boolean isSupported() {
-        return FileUtils.isFileWritable(FILE_LEVEL);
+        return Utils.fileWritable(FILE_LEVEL);
     }
 
-    public static String getValue(Context context) {
-        return FileUtils.getFileValue(FILE_LEVEL, "3596");
-    }
+	public static String getValue(Context context) {
+		return Utils.getFileValue(FILE_LEVEL, "3596");
+	}
 
-    private void setValue(String newValue, boolean withFeedback) {
-        FileUtils.writeValue(FILE_LEVEL, newValue);
+	private void setValue(String newValue, boolean withFeedback) {
+	    Utils.writeValue(FILE_LEVEL, newValue);
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
         editor.putString(DeviceSettings.KEY_VIBSTRENGTH, newValue);
         editor.commit();
@@ -92,8 +90,8 @@ public class VibratorStrengthPreference extends Preference implements
             return;
         }
 
-        String storedValue = PreferenceManager.getDefaultSharedPreferences(context).getString(DeviceSettings.KEY_VIBSTRENGTH, "2700");
-        FileUtils.writeValue(FILE_LEVEL, storedValue);
+        String storedValue = PreferenceManager.getDefaultSharedPreferences(context).getString(DeviceSettings.KEY_VIBSTRENGTH, "2700"); 
+        Utils.writeValue(FILE_LEVEL, storedValue);
     }
 
     public void onProgressChanged(SeekBar seekBar, int progress,
@@ -109,3 +107,4 @@ public class VibratorStrengthPreference extends Preference implements
         // NA
     }
 }
+
