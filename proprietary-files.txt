@@ -561,3 +561,8 @@ vendor/lib64/libtime_genoff.so
 
 # Wi-Fi
 vendor/bin/cnss-daemon
+
+#Others
+vendor/lib/libwfdhdcpcp.so|feeb07fba63442a3d428d98b0884e813a4787cd6
+vendor/lib64/libwfdhdcpcp.so|cd7c9b49b094918d202edc50746b266a6761c585
+vendor/lib/libmmosal_proprietary.so|c36283ee3a72290ba6662b6ca13af8d7e323b5ec
