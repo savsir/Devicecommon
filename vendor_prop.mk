@@ -189,3 +189,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Wlan
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
+
+# Maintainer
+ro.havoc.maintainer=savsir
