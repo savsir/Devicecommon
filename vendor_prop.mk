@@ -192,3 +192,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Maintainer
 ro.havoc.maintainer=savsir
+
+# Pie Telephony blobs
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.qti.pie.telephony=1
