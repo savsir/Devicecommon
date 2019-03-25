@@ -39,7 +39,7 @@ public final class FileUtils {
      *
      * @return the read line contents, or null on failure
      */
-    public static String readOneLine(String fileName) {
+    public static String readLine(String fileName) {
         String line = null;
         BufferedReader reader = null;
 
@@ -59,8 +59,23 @@ public final class FileUtils {
                 // Ignored, not much we can do anyway
             }
         }
-
         return line;
+    }
+
+    public static boolean getFileValueAsBoolean(String filename, boolean defValue) {
+        String fileValue = readLine(filename);
+        if(fileValue!=null){
+            return (fileValue.equals("0") ? false : true);
+        }
+        return defValue;
+    }
+
+    public static String getFileValue(String filename, String defValue) {
+        String fileValue = readLine(filename);
+        if(fileValue!=null){
+            return fileValue;
+        }
+        return defValue;
     }
 
     /**
@@ -68,7 +83,7 @@ public final class FileUtils {
      *
      * @return true on success, false on failure
      */
-    public static boolean writeLine(String fileName, String value) {
+    public static boolean writeValue(String fileName, String value) {
         BufferedWriter writer = null;
 
         try {
@@ -89,7 +104,6 @@ public final class FileUtils {
                 // Ignored, not much we can do anyway
             }
         }
-
         return true;
     }
 
@@ -98,7 +112,7 @@ public final class FileUtils {
      *
      * @return true if exists, false if not
      */
-    public static boolean fileExists(String fileName) {
+    public static boolean isFileExists(String fileName) {
         final File file = new File(fileName);
         return file.exists();
     }

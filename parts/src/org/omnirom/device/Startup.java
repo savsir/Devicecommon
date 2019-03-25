@@ -15,43 +15,34 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 *
 */
+
 package org.omnirom.device;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.preference.PreferenceManager;
 import android.provider.Settings;
+import android.support.v7.preference.PreferenceManager;
 import android.text.TextUtils;
 
+import org.omnirom.device.R;
+import org.omnirom.device.utils.FileUtils;
+
 public class Startup extends BroadcastReceiver {
-
-    private void restore(String file, boolean enabled) {
-        if (file == null) {
-            return;
-        }
-        if (enabled) {
-            Utils.writeValue(file, "1");
-        }
-    }
-
-    private void restore(String file, String value) {
-        if (file == null) {
-            return;
-        }
-        Utils.writeValue(file, value);
-    }
 
     @Override
     public void onReceive(final Context context, final Intent bootintent) {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        boolean enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_TAPTOWAKE_SWITCH, false);
-        restore(TapToWakeSwitch.getFile(), enabled);
-
         VibratorStrengthPreference.restore(context);
         S2SVibratorStrengthPreference.restore(context);
         String storedValue = PreferenceManager.getDefaultSharedPreferences(context).getString(DeviceSettings.S2S_KEY, "0");
-        Utils.writeValue(DeviceSettings.FILE_S2S_TYPE, storedValue);
+        FileUtils.writeValue(DeviceSettings.FILE_S2S_TYPE, storedValue);
+        DeviceSettings.restoreSpectrumProp(context);
+        boolean btnSwapStoredValue = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(DeviceSettings.BUTTONS_SWAP_KEY, false);
+        FileUtils.writeValue(DeviceSettings.BUTTONS_SWAP_PATH, btnSwapStoredValue ? "1" : "0");
+        boolean usbFastchargeStoredValue = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(DeviceSettings.USB_FASTCHARGE_KEY, false);
+        FileUtils.writeValue(DeviceSettings.USB_FASTCHARGE_PATH, usbFastchargeStoredValue ? "1" : "0" );
+        DisplayCalibration.restore(context);
     }
 }

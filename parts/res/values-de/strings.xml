@@ -10,21 +10,15 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
+
 <resources>
     <string name="app_name">XiaomiParts</string>
     <string name="advanced_settings">Xiaomi</string>
     <string name="advanced_settings_summary">Erweitert</string>
     <string name="category_system">System</string>
     <string name="vib_strength_title_head">Vibrationsstärke</string>
-    <string name="taptowake_title">Tippen zum aufwecken - DoubleTap2Wake</string>
-    <string name="taptowake_summary">Doppel-klicke auf dem Display um das Gerät aufzuwecken</string>
 
     <string name="display_title">Display</string>
-    <string name="device_doze_title">Inaktivitäts Display</string>
-
-    <!-- camera -->
-    <string name="camera_title">Kamera</string>
-    <string name="camera_hal3_title">Aktiviere die Camera2 API</string>
 
     <!-- s2s -->
     <string name="s2s_title">Streichen zum Schlafen - Sweep2Sleep</string>
@@ -44,9 +38,7 @@
     <string name="kcal_color_temp">Farbtemperatur (K)</string>
 
     <!-- Spectrum Profiles -->
-    <string name="spectrum_profile_title">Spectrum Profile</string>
-    <string name="spectrum_title">Spectrum Profile</string>
-    <string name="spectrum_summary">Wähle dein Spectrum Profil</string>
-    <string name="spectrum_dialogTitle">Wähle dein Spectrum Profil</string>
-
+    <string name="spectrum_profile_title">Kernel</string>
+    <string name="spectrum_title">Kernel Profile</string>
+    <string name="spectrum_dialogTitle">Wähle dein Kernel Profil</string>
 </resources>

@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <resources>
-
     <!-- sweep2sleep -->
     <string-array name="s2sArray">
         <item>Kapalı</item>
-        <item>Sağa kaydır</item>
-        <item>Sola kaydır</item>
-        <item>Sağa yada sola kaydır</item>
+        <item>Sağa süpür</item>
+        <item>Sola süpür</item>
+        <item>Sağa yada sola süpür</item>
     </string-array>
     <string-array name="s2sValues">
         <item>0</item>
@@ -19,15 +17,26 @@
     <!-- spectrum profiles -->
     <string-array name="spectrum_profiles">
         <item>Dengeli</item>
+        <item>Batarya</item>
         <item>Performans</item>
-        <item>Tasarruf</item>
         <item>Oyun</item>
     </string-array>
     <string-array name="spectrum_values">
         <item>0</item>
-        <item>1</item>
         <item>2</item>
+        <item>1</item>
         <item>3</item>
     </string-array>
 
+    <!-- Cameras switcher -->
+    <string-array name="cam_entires">
+        <item>@string/cam_miui</item>
+        <item>@string/cam_gcam</item>
+        <item>@string/cam_all</item>
+    </string-array>
+    <string-array name="cam_values">
+        <item>com.android.camera</item>
+        <item>com.google.android.GoogleCamera</item>
+        <item>all</item>
+    </string-array>
 </resources>

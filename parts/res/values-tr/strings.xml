@@ -13,25 +13,20 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
+
 <resources>
     <string name="app_name">Xiaomi</string>
     <string name="advanced_settings">Xiaomi</string>
-    <string name="advanced_settings_summary">Gelişmiş ayarlar</string> 
+    <string name="advanced_settings_summary">Gelişmiş</string>
     <string name="category_system">Sistem</string>
     <string name="vib_strength_title_head">Titreşim gücü</string>
-    <string name="taptowake_title">Dokunarak uyandır</string>
-    <string name="taptowake_summary">Uyandırmak için çift tıklama</string>
 
     <string name="display_title">Ekran</string>
-    <string name="device_doze_title">Ortam ekranı</string>
-
-    <!-- camera -->
-    <string name="camera_title">Kamera</string>
-    <string name="camera_hal3_title">Camera2 API etkinleştir</string>
 
     <!-- s2s -->
-    <string name="s2s_title">Kaydırarak uyut</string>
-    <string name="s2s_vib_strength_title_head">Kaydırarak uyutma titreşimi</string>
+    <string name="s2s_title">Uyutmak için süpür</string>
+    <string name="s2s_title_summary_cat">Ekranın altından yapın</string>
+    <string name="s2s_vib_strength_title_head">Süpürerek uyutma titreşimi</string>
 
     <!-- Kcal -->
     <string name="kcal_title">Ekran rengi</string>
@@ -43,13 +38,29 @@
     <string name="kcal_blue">Mavi</string>
     <string name="kcal_saturation">Doygunluk</string>
     <string name="kcal_contrast">Kontrast</string>
-    <string name="menu_reset">S</string>
-    <string name="kcal_color_temp">Renk sıcaklığı(K)</string>
+    <string name="menu_reset">Sıfırla</string>
+    <string name="kcal_color_temp">Renk sıcaklığı (K)</string>
 
     <!-- Spectrum Profiles -->
-    <string name="spectrum_profile_title">SPECTRUM Profili</string>
-    <string name="spectrum_title">SPECTRUM Profili</string>
-    <string name="spectrum_summary">Güç profininizi seçin</string>
+    <string name="spectrum_profile_title">Kernel Profilleri</string>
+    <string name="spectrum_title">Kernel Profili</string>
     <string name="spectrum_dialogTitle">Güç profininizi seçin</string>
 
+    <!-- Swap HW buttons -->
+    <string name="hw_buttons_title">Donanım tuşları</string>
+    <string name="swap_hw_buttons_title">Tuşları değiştir</string>
+    <string name="swap_hw_buttons_summary">Son uygulamalar ve geri butonunun yerini değiştir</string>
+
+    <!-- usb fastcharge -->
+    <string name="usb_fastcharge_title">USB Hızlı Şarj</string>
+    <string name="fastcharge_title">USB Hızlı Şarjı Aktifleştir</string>
+    <string name="fastcharge_summary">USB 3.X bilgisayalarlada usbden hızlı şarj</string>
+
+    <!-- Cameras switcher -->
+    <string name="cam_switcher_cat">Kamera değiştirici</string>
+    <string name="cam_switcher_title">Kullanılan kamera</string>
+    <string name="cam_dialog_title">Kamerayı seçin</string>
+    <string name="cam_miui">MIUI Kamera</string>
+    <string name="cam_gcam">Google Kamera</string>
+    <string name="cam_all">Tüm kameralar</string>
 </resources>
