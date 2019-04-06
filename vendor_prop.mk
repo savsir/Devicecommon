@@ -196,7 +196,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
 
 # Maintainer
-ro.havoc.maintainer=savsir
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.havoc.maintainer=savsir
 
 # Pie Telephony blobs
 PRODUCT_PROPERTY_OVERRIDES += \
