@@ -45,13 +45,16 @@ on fs
     mount_all /vendor/etc/fstab.qcom --early
     swapon_all /vendor/etc/fstab.qcom
 
-    restorecon_recursive /persist
-    mkdir /persist/data 0700 system system
-    mkdir /persist/wlan_bt 0770 system system
-    mkdir /persist/audio 0755 system system
+    restorecon_recursive /mnt/vendor/persist
+    mkdir /mnt/vendor/persist/alarm 0770 system system
+    mkdir /mnt/vendor/persist/audio 0755 system system
+    mkdir /mnt/vendor/persist/bluetooth 0770 bluetooth bluetooth
+    mkdir /mnt/vendor/persist/data 0700 system system
+    mkdir /mnt/vendor/persist/time 0770 system system
+    mkdir /mnt/vendor/persist/wlan_bt 0770 system system
 
 on post-fs
-    wait_for_prop sys.listeners.registered true
+    wait_for_prop vendor.sys.listeners.registered true
 
     write /dev/ipa 1
 
@@ -101,8 +104,9 @@ service vendor.per_proxy /vendor/bin/pm-proxy
 on property:init.svc.per_mgr=running
     start vendor.per_proxy
 
-on property:sys.powerctl=*
+on property:sys.shutdown.requested=*
     stop vendor.per_proxy
+    stop vendor.ims_rtp_daemon
 
 service vendor.qseecomd /vendor/bin/qseecomd
     class core
@@ -154,7 +158,7 @@ service vendor.ims_rtp_daemon /vendor/bin/ims_rtp_daemon
 service vendor.imsrcsservice /vendor/bin/imsrcsd
     class main
     user system
-    group radio diag inet log
+    group radio diag inet log wakelock
     writepid /dev/cpuset/system-background/tasks
 
 on property:vendor.ims.DATA_DAEMON_STATUS=1
@@ -171,13 +175,3 @@ service vendor.readmac /vendor/bin/readmac
     user system
     group system net_raw
     oneshot
-
-service tfa-sh /system/bin/init.tfa.sh /vendor/etc/calibration_sound.wav 15 1
-    class main
-    user system
-    group system
-    disabled
-    oneshot
-
-on property:sys.boot_completed=1 && property:audio.calibration_enabled=1
-    start tfa-sh

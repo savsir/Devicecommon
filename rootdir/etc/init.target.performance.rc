@@ -5,10 +5,15 @@ service vendor.qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
     oneshot
 
 on init
-    # Set up schedtune
+    # Disable UFS powersaving
+    write /sys/devices/soc/${ro.boot.bootdevice}/clkscale_enable 0
+    write /sys/devices/soc/${ro.boot.bootdevice}/clkgate_enable 0
+
+    # SchedTune
     write /dev/stune/foreground/schedtune.prefer_idle 1
-    write /dev/stune/top-app/schedtune.boost 10
     write /dev/stune/top-app/schedtune.prefer_idle 1
+    write /dev/stune/top-app/schedtune.boost 0
+    write /dev/stune/top-app/schedtune.sched_boost 1
 
     # Add a cpuset for the camera daemon
     mkdir /dev/cpuset/camera-daemon 0750 cameraserver cameraserver
@@ -29,12 +34,6 @@ on init
     chmod 0664 /sys/devices/virtual/graphics/fb0/idle_time
     chown system graphics /sys/devices/virtual/graphics/fb0/idle_time
     write /sys/devices/virtual/graphics/fb0/idle_time 100
-
-on boot
-    # set default schedtune value for foreground/top-app (only affects EAS)
-    write /dev/stune/foreground/schedtune.prefer_idle 1
-    write /dev/stune/top-app/schedtune.boost 1
-    write /dev/stune/top-app/schedtune.prefer_idle 1
 
 on charger
     write /sys/class/input/input0/enabled 0
@@ -65,6 +64,12 @@ on charger
     wait /dev/block/bootdevice/by-name/persist
     mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
 
+    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+
+    # Enable UFS powersaving
+    write /sys/devices/soc/${ro.boot.bootdevice}/clkscale_enable 1
+    write /sys/devices/soc/${ro.boot.bootdevice}/clkgate_enable 1
+
     load_system_props
 
     start vendor.hvdcp_opti
@@ -81,8 +86,6 @@ on late-fs
     write /sys/block/sde/queue/iostats 0
     write /sys/block/sde/queue/nr_requests 256
 
-    setprop sys.io.scheduler "cfq"
-	
 on post-fs
     # Disable sched autogroup
     write /proc/sys/kernel/sched_autogroup_enabled 0
@@ -97,7 +100,15 @@ on post-fs
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
 
+    chmod 0664 /sys/devices/virtual/graphics/fb0/idle_time
+    chown system graphics /sys/devices/virtual/graphics/fb0/idle_time
+    write /sys/devices/virtual/graphics/fb0/idle_time 100
+
 on property:sys.boot_completed=1
+    # Enable UFS powersaving
+    write /sys/devices/soc/${ro.boot.bootdevice}/clkscale_enable 1
+    write /sys/devices/soc/${ro.boot.bootdevice}/clkgate_enable 1
+
     # end boot time fs tune
     write /sys/block/sda/queue/iostats 1
     write /sys/block/sda/queue/nr_requests 128
@@ -105,10 +116,8 @@ on property:sys.boot_completed=1
     write /sys/block/sde/queue/iostats 1
     write /sys/block/sde/queue/nr_requests 128
     write /sys/block/sde/queue/read_ahead_kb 128
-	# Set the default IRQ affinity to the silver cluster.
+    # Set the default IRQ affinity to the silver cluster.
     write /proc/irq/default_smp_affinity f
-
-    setprop sys.io.scheduler "bfq"
 
     # Disable thermal bcl hotplug to switch governor
     write /sys/module/msm_thermal/core_control/enabled 0
@@ -163,6 +172,10 @@ on property:sys.boot_completed=1
     write /dev/cpuset/foreground/cpus 0-3,6-7
     write /dev/cpuset/background/cpus 0-1
     write /dev/cpuset/system-background/cpus 0-3
+    write /dev/cpuset/restricted/cpus 0-3
     write /dev/cpuset/camera-daemon/cpus 0-3
 
     start vendor.qcom-post-boot
+
+    # Enable PowerHAL hint processing
+    setprop vendor.powerhal.init 1

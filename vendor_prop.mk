@@ -54,29 +54,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.use.sw.ape.decoder=true \
     vendor.audio_hal.period_size=192
 
-# Audio calibration
-PRODUCT_PROPERTY_OVERRIDES += \
-    audio.calibration_enabled=0
-	
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     qcom.bluetooth.soc=cherokee \
-	vendor.qcom.bluetooth.soc=cherokee \
     ro.bluetooth.hfp.ver=1.6
-	
-# Boot
-PRODUCT_PROPERTY_OVERRIDES += \
-    sys.vendor.shutdown.waittime=500
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.camera.eis.enable=1 \
     persist.camera.HAL3.enabled=1 \
     persist.camera.set.afd=4 \
     persist.camera.xm.green.b=0.96 \
     persist.camera.xm.green.r=0.97 \
     persist.dualcam.lpm.enable=1 \
-    vendor.camera.aux.packagelist=com.android.camera,org.lineageos.snap,com.google.android.GoogleCameraTele \
+    vendor.camera.aux.packagelist=com.android.camera,org.lineageos.snap \
     vidc.enc.dcvs.extra-buff-count=2
 
 # CNE
@@ -89,7 +79,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.hw=1 \
     debug.sf.latch_unsignaled=1 \
     ro.opengles.version=196610 \
-    ro.sf.lcd_density=480 \
+    vendor.display.disable_partial_split=1 \
     vendor.display.disable_rotator_downscale=1 \
     vendor.display.disable_skip_validate=1 \
     vendor.display.enable_default_color_mode=1 \
@@ -141,13 +131,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.data.mode=concurrent \
     persist.radio.apm_sim_not_pwdn=1 \
     persist.radio.dynamic_sar=false \
     persist.radio.multisim.config=dsds \
     persist.rmnet.data.enable=true \
-    persist.vendor.ims.dropset_feature=0 \
-    persist.vendor.radio.add_power_save=1 \
+    persist.vendor.data.mode=concurrent \
+    persist.vendor.radio.apm_sim_not_pwdn=1 \
     persist.vendor.radio.custom_ecc=1 \
     persist.vendor.radio.force_on_dc=true \
     persist.vendor.radio.rat_on=combine \
@@ -157,7 +146,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/vendor/lib64/libril-wrapper.so \
     ro.telephony.default_cdma_sub=0 \
     ro.telephony.default_network=22,22 \
-    ro.use_data_netmgrd=true \
+    ro.vendor.use_data_netmgrd=true \
     telephony.lteOnCdmaDevice=1 \
     vendor.voice.path.for.pcm.voip=true
 
@@ -178,10 +167,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.sensors.pmd=false \
     ro.vendor.sensors.sta_detect=true
 
-# Spectrum
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.spectrum.profile=0
-
 # Time services
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.delta_time.enable=true
@@ -198,7 +183,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Maintainer
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.havoc.maintainer=savsir
-
-# Pie Telephony blobs
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.qti.pie.telephony=1

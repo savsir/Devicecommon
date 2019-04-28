@@ -118,7 +118,8 @@ Return<void> Power::powerHint(PowerHint_1_0 hint, int32_t data) {
     return Void();
 }
 
-Return<void> Power::setFeature(Feature /*feature*/, bool /*activate*/)  {
+Return<void> Power::setFeature(Feature feature, bool activate)  {
+    set_feature(static_cast<feature_t>(feature), activate ? 1 : 0);
     return Void();
 }
 
@@ -262,6 +263,39 @@ Return<void> Power::powerHintAsync_1_2(PowerHint_1_2 hint, int32_t data) {
                     mHintManager->EndHint("AUDIO_STREAMING");
                     ALOGD("AUDIO STREAMING OFF");
                 }
+            }
+            break;
+        case PowerHint_1_2::CAMERA_LAUNCH:
+            if (data > 0) {
+                mHintManager->DoHint("LAUNCH", std::chrono::milliseconds(data));
+                ALOGD("LAUNCH ON: %d MS", data);
+            } else if (data == 0) {
+                mHintManager->EndHint("LAUNCH");
+                ALOGD("LAUNCH OFF");
+            } else {
+                ALOGE("LAUNCH INVALID DATA: %d", data);
+            }
+            break;
+        case PowerHint_1_2::CAMERA_STREAMING:
+            if (data > 0) {
+                mHintManager->DoHint("CAMERA_STREAMING", std::chrono::milliseconds(data));
+                ALOGD("CAMERA STREAMING ON: %d MS", data);
+            } else if (data == 0) {
+                mHintManager->EndHint("CAMERA_STREAMING");
+                ALOGD("CAMERA STREAMING OFF");
+            } else {
+                ALOGE("CAMERA STREAMING INVALID DATA: %d", data);
+            }
+            break;
+        case PowerHint_1_2::CAMERA_SHOT:
+            if (data > 0) {
+                mHintManager->DoHint("CAMERA_SHOT", std::chrono::milliseconds(data));
+                ALOGD("CAMERA SHOT ON: %d MS", data);
+            } else if (data == 0) {
+                mHintManager->EndHint("CAMERA_SHOT");
+                ALOGD("CAMERA SHOT OFF");
+            } else {
+                ALOGE("CAMERA SHOT INVALID DATA: %d", data);
             }
             break;
         default:
