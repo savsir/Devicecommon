@@ -1,4 +1,4 @@
-/* Copyright (c) 2017-2018 The Linux Foundation. All rights reserved.
+/* Copyright (c) 2017 The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -294,7 +294,6 @@ typedef enum {
     GNSS_SV_OPTIONS_HAS_EPHEMER_BIT = (1<<0),
     GNSS_SV_OPTIONS_HAS_ALMANAC_BIT = (1<<1),
     GNSS_SV_OPTIONS_USED_IN_FIX_BIT = (1<<2),
-    GNSS_SV_OPTIONS_HAS_CARRIER_FREQUENCY_BIT = (1<<3),
 } GnssSvOptionsBits;
 
 typedef enum {
@@ -309,9 +308,8 @@ typedef enum {
 } GnssSuplMode;
 
 typedef enum {
-    BATCHING_MODE_ROUTINE = 0,   // positions are reported when batched positions memory is full
-    BATCHING_MODE_TRIP,          // positions are reported when a certain distance is covered
-    BATCHING_MODE_NO_AUTO_REPORT // no report of positions automatically, instead queried on demand
+    BATCHING_MODE_ROUTINE = 0,
+    BATCHING_MODE_TRIP
 } BatchingMode;
 
 typedef enum {
@@ -536,7 +534,6 @@ typedef struct {
     float elevation;   // elevation of SV (in degrees)
     float azimuth;     // azimuth of SV (in degrees)
     GnssSvOptionsMask gnssSvOptionsMask; // Bitwise OR of GnssSvOptionsBits
-    float carrierFrequencyHz; // carrier frequency of the signal tracked
 } GnssSv;
 
 typedef struct {

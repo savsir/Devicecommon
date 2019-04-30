@@ -28,7 +28,7 @@
 #include <unistd.h>
 
 const int MAC_SIZE = 6;
-const char WLAN_MAC_FILE[] = "/mnt/vendor/persist/wlan_mac.bin";
+const char WLAN_MAC_FILE[] = "/persist/wlan_mac.bin";
 
 const char LIB_QMINVAPI[] = "libqminvapi.so";
 
@@ -118,7 +118,7 @@ static int write_wlan_mac_file(uint8_t wlan_mac[]) {
             wlan_mac[5] + 1);
     fprintf(fp, "END\n");
     fclose(fp);
-    chmod(WLAN_MAC_FILE, 0644);
+    chmod(WLAN_MAC_FILE, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 
     return 0;
 }
